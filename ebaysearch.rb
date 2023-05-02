@@ -1,8 +1,8 @@
 require 'nokogiri'
 require 'open-uri'
 require 'uri'
+require 'caxlsx'
 require 'win32ole'
-require 'axlsx'
 
 # Ask the user to enter a search term
 puts "Enter a search term:"
@@ -69,7 +69,7 @@ Axlsx::Package.new do |p|
       save_folder = save_dialog.Items().Item().Path
       puts "Enter a file name:"
       file_name = gets.chomp
-      file_path = File.join(save_folder, file_name)
+      file_path = File.join(save_folder, file_name + '.xlsx') # include the .xlsx extension
 
       # Save the Excel file
       p.serialize(file_path)
