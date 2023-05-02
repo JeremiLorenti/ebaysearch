@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'uri'
 require 'win32ole'
+require 'axlsx'
 
 # Ask the user to enter a search term
 puts "Enter a search term:"
@@ -50,7 +51,6 @@ end
 
 # Create the Excel file
 Axlsx::Package.new do |p|
-  require 'axlsx'
   p.workbook.add_worksheet(:name => "eBay Listings") do |sheet|
     data.each do |row|
       sheet.add_row row
